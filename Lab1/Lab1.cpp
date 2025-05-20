@@ -5,11 +5,13 @@
 
 int main(int argc, char** argv) {
 
+	//dimension variables
 	int width = 800;
 	int height = 600;
 
 	ALLEGRO_DISPLAY* display = NULL;
 
+	//check for allegro/display
 	if (!al_init()) {
 		fprintf(stderr, "failed to initialize allegro!\n");
 		return -1;
@@ -21,15 +23,22 @@ int main(int argc, char** argv) {
 		return -1;
 	}
 
+	//use primitives
 	al_init_primitives_addon();
 
+	//set background to black & flip renders
 	al_clear_to_color(al_map_rgb(0, 0, 0));
 	al_flip_display();
 
-	al_draw_line(0, 0, 100, 100, al_map_rgb(255, 255, 255), 10);
+	al_draw_filled_circle(400, 300, 100, al_map_rgb(255, 255, 255));
+	al_draw_triangle(300, 300, 200, 400, 200, 200, al_map_rgb(255, 255, 255), 10);
+	al_draw_circle(450, 350, 50, al_map_rgb(0, 0, 0), 5);
+	al_draw_line(400, 275, 450, 275, al_map_rgb(255, 165, 0), 5);
+
 	al_flip_display();
 
-	al_rest(5.0);
+
+	al_rest(10);
 
 	al_destroy_display(display);
 
